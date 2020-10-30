@@ -24,18 +24,6 @@ const DataGrid = ({
   const flatArray = data.reduce((i, o) => [...o, ...i], []);
   const max = Math.max(...flatArray);
   const min = Math.min(...flatArray);
-  const getYLabelsWidth = () => {
-    let ret = 0
-    yLabels.forEach((yLabel) => {
-      if (ret < yLabel.length * 5) {
-        ret = yLabel.length * 8
-      }
-    })
-    return ret
-  }
-  yLabels.forEach((yLabel) => {
-  })
-  yLabelWidth = !!yLabelWidth ? yLabelWidth: getYLabelsWidth()
 
   return (
     <div>

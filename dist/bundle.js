@@ -641,6 +641,18 @@ function HeatMap(_ref) {
   if (onClick !== undefined) {
     cursor = "pointer";
   }
+  var getYLabelsWidth = function getYLabelsWidth() {
+    var ret = 50;
+    yLabels.forEach(function (yLabel) {
+      if (ret < yLabel.length * 5) {
+        ret = yLabel.length * 8;
+      }
+    });
+    return ret;
+  };
+  yLabelWidth = !!yLabelWidth ? yLabelWidth : getYLabelsWidth();
+  console.log(yLabelWidth, xLabelWidth);
+
   var xLabelsEle = _react2.default.createElement(_XLabels2.default, {
     labels: xLabels,
     width: xLabelWidth,
@@ -649,6 +661,7 @@ function HeatMap(_ref) {
     squares: squares,
     yWidth: yLabelWidth
   });
+
   return _react2.default.createElement(
     "div",
     null,
@@ -702,7 +715,7 @@ HeatMap.propTypes = {
 HeatMap.defaultProps = {
   background: "#329fff",
   height: 30,
-  xLabelWidth: 60,
+  xLabelWidth: null,
   yLabelWidth: null,
   yLabelTextAlign: "right",
   unit: "",
@@ -3427,17 +3440,6 @@ var DataGrid = function DataGrid(_ref) {
   }, []);
   var max = Math.max.apply(Math, _toConsumableArray(flatArray));
   var min = Math.min.apply(Math, _toConsumableArray(flatArray));
-  var getYLabelsWidth = function getYLabelsWidth() {
-    var ret = 0;
-    yLabels.forEach(function (yLabel) {
-      if (ret < yLabel.length * 5) {
-        ret = yLabel.length * 8;
-      }
-    });
-    return ret;
-  };
-  yLabels.forEach(function (yLabel) {});
-  yLabelWidth = !!yLabelWidth ? yLabelWidth : getYLabelsWidth();
 
   return _react2.default.createElement(
     "div",

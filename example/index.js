@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import HeatMap from "../src";
 
-const xLabels = new Array(24).fill(0).map((_, i) => `${i}`);
+const xLabels = new Array(24).fill(0).map((_, i) => `${i+1000}`);
 
 // Display only even labels
 const xLabelsVisibility = new Array(24)
@@ -20,13 +20,13 @@ ReactDOM.render(
   <HeatMap
     xLabels={xLabels}
     yLabels={yLabels}
-    xLabelsLocation={"bottom"}
-    xLabelsVisibility={xLabelsVisibility}
+    xLabelsLocation={"top"}
+    //xLabelsVisibility={xLabelsVisibility}
     yLabelStyles={{backgroundColor:'red',borderColor:'red',paddingTop:'12px'}}
-    xLabelWidth={50}
+    xLabelWidth={null}
     yLabelWidth={null}
     data={data}
-    squares
+    //squares
     onClick={(x, y) => alert(`Clicked ${x}, ${y}`)}
     cellStyle={(background, value, min, max, data, x, y) => ({
       background: `rgb(12, 160, 244, ${1 - (max - value) / (max - min)})`,

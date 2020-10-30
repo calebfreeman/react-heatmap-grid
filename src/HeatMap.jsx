@@ -27,6 +27,18 @@ function HeatMap({
   if (onClick !== undefined) {
     cursor = "pointer";
   }
+  const getYLabelsWidth = () => {
+    let ret = 50
+    yLabels.forEach((yLabel) => {
+      if (ret < yLabel.length * 5) {
+        ret = yLabel.length * 8
+      }
+    })
+    return ret
+  }
+  yLabelWidth = !!yLabelWidth ? yLabelWidth : getYLabelsWidth()
+  console.log(yLabelWidth,xLabelWidth)
+
   const xLabelsEle = (
     <XLabels
       labels={xLabels}
@@ -37,6 +49,7 @@ function HeatMap({
       yWidth={yLabelWidth}
     />
   );
+
   return (
     <div>
       {xLabelsLocation === "top" && xLabelsEle}
@@ -96,7 +109,7 @@ HeatMap.propTypes = {
 HeatMap.defaultProps = {
   background: "#329fff",
   height: 30,
-  xLabelWidth: 60,
+  xLabelWidth: null,
   yLabelWidth: null,
   yLabelTextAlign: "right",
   unit: "",
