@@ -37,7 +37,6 @@ function HeatMap({
     return ret
   }
   yLabelWidth = !!yLabelWidth ? yLabelWidth : getYLabelsWidth()
-  console.log(yLabelWidth,xLabelWidth)
 
   const xLabelsEle = (
     <XLabels

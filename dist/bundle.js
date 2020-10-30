@@ -651,7 +651,6 @@ function HeatMap(_ref) {
     return ret;
   };
   yLabelWidth = !!yLabelWidth ? yLabelWidth : getYLabelsWidth();
-  console.log(yLabelWidth, xLabelWidth);
 
   var xLabelsEle = _react2.default.createElement(_XLabels2.default, {
     labels: xLabels,
