@@ -11,7 +11,7 @@ const DataGrid = ({
   background,
   height,
   yLabelTextAlign,
-  yLabelsBackgroundColor,
+  yLabelStyles,
   unit,
   displayYLabels,
   onClick,
@@ -24,21 +24,32 @@ const DataGrid = ({
   const flatArray = data.reduce((i, o) => [...o, ...i], []);
   const max = Math.max(...flatArray);
   const min = Math.min(...flatArray);
+  const getYLabelsWidth = () => {
+    let ret = 0
+    yLabels.forEach((yLabel) => {
+      if (ret < yLabel.length * 5) {
+        ret = yLabel.length * 8
+      }
+    })
+    return ret
+  }
+  yLabels.forEach((yLabel) => {
+  })
+  yLabelWidth = !!yLabelWidth ? yLabelWidth: getYLabelsWidth()
 
   return (
     <div>
       {yLabels.map((y, yi) => (
-        <div key={yi} style={{ display: "flex" }}>
+        <div key={yi} style={{ display: "flex"}}>
           <FixedBox width={yLabelWidth}>
             <div
-              style={{
+              style={Object.assign({
                 position: "absolute",
                 textAlign: yLabelTextAlign,
                 paddingRight: "5px",
                 paddingTop: `${height / 3.7}px`,
-                width: `${yLabelWidth}px`,
-                backgroundColor: yLabelsBackgroundColor
-              }}
+                width: `${yLabelWidth}px`
+              },yLabelStyles)}
             >
               {displayYLabels && y}
             </div>
@@ -88,7 +99,7 @@ DataGrid.propTypes = {
   xLabelWidth: PropTypes.number.isRequired,
   yLabelWidth: PropTypes.number.isRequired,
   yLabelTextAlign: PropTypes.string.isRequired,
-  yLabelsBackgroundColor: PropTypes.string,
+  yLabelStyles: PropTypes.object,
   unit: PropTypes.string.isRequired,
   displayYLabels: PropTypes.bool,
   onClick: PropTypes.func,
