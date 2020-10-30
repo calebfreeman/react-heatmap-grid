@@ -11,6 +11,7 @@ const DataGrid = ({
   background,
   height,
   yLabelTextAlign,
+  yLabelsBackgroundColor,
   unit,
   displayYLabels,
   onClick,
@@ -35,7 +36,8 @@ const DataGrid = ({
                 textAlign: yLabelTextAlign,
                 paddingRight: "5px",
                 paddingTop: `${height / 3.7}px`,
-                width: `${yLabelWidth}px`
+                width: `${yLabelWidth}px`,
+                backgroundColor: yLabelsBackgroundColor
               }}
             >
               {displayYLabels && y}
@@ -86,6 +88,7 @@ DataGrid.propTypes = {
   xLabelWidth: PropTypes.number.isRequired,
   yLabelWidth: PropTypes.number.isRequired,
   yLabelTextAlign: PropTypes.string.isRequired,
+  yLabelsBackgroundColor: PropTypes.string,
   unit: PropTypes.string.isRequired,
   displayYLabels: PropTypes.bool,
   onClick: PropTypes.func,
